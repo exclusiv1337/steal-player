@@ -25,7 +25,7 @@ MainTab:CreateButton({
     Name = "StealPlayer",
     Callback = function()
         local success, err = pcall(function()
-            loadstring(game:HttpGet("http://vpaste.net/fCXtS"))()
+            loadstring(game:HttpGet("http://vpaste.net/eyzNu"))()
         end)
         if success then
             Rayfield:Notify({
@@ -92,3 +92,4 @@ MainTab:CreateButton({
 CreditsTab:CreateLabel("StealPlayer | V2")
 CreditsTab:CreateLabel("Made by: madgekoy2")
 CreditsTab:CreateLabel("Special thanks to: Rayfield")
+
